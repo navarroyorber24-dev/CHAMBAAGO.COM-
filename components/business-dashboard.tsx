@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import {
   Activity, ArrowDownRight, ArrowUpRight, BriefcaseBusiness,
-  ChartNoAxesCombined, CheckCircle2, ChevronRight, CircleDollarSign,
+  ChartNoAxesCombined, ChevronRight, CircleDollarSign,
   ClipboardList, Database, FileSpreadsheet, Home, Menu, ShieldCheck,
   Users, Wallet, X, Wrench
 } from 'lucide-react'
@@ -15,6 +15,14 @@ const sections = [
   { label: 'Servicios', href: '#servicios', icon: Wrench },
   { label: 'Ingresos y egresos', href: '#finanzas', icon: CircleDollarSign },
   { label: 'Datos y auditoría', href: '#datos', icon: Database },
+]
+
+
+const specialties = [
+  { title: 'Electricidad', description: 'Instalaciones, reparaciones y mantenimiento.', image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=900&q=85' },
+  { title: 'Gasfitería', description: 'Fugas, tuberías, grifos y emergencias.', image: 'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=900&q=85' },
+  { title: 'Limpieza', description: 'Limpieza profunda y mantenimiento del hogar.', image: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=900&q=85' },
+  { title: 'Jardinería', description: 'Cuidado de jardines y áreas verdes.', image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=85' },
 ]
 
 const modules = [
@@ -70,6 +78,23 @@ export default function BusinessDashboard() {
           <div className="grid grid-cols-2 gap-3">{['Usuarios y clientes','Profesionales','Servicios y evidencias','Pagos y egresos'].map(x=><div key={x} className="rounded-xl border border-white/15 bg-white/10 px-3 py-3 text-center text-sm font-semibold">{x}</div>)}</div>
           <div className="mt-4 flex items-center justify-center gap-2 text-xs text-emerald-200"><ShieldCheck size={16}/> Accesos por rol y registro de auditoría</div>
         </div>
+      </div>
+    </section>
+
+    <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+      <div className="mx-auto max-w-2xl text-center">
+        <p className="text-xs font-bold uppercase tracking-[.2em] text-teal-700">Profesionales y servicios</p>
+        <h2 className="mt-2 text-3xl font-black tracking-tight text-slate-900">Soluciones para cada espacio de tu hogar</h2>
+        <p className="mt-3 text-sm leading-6 text-slate-600">Encuentra especialistas por categoría, comparte el problema y compara propuestas antes de contratar.</p>
+      </div>
+      <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        {specialties.map((item) => <article key={item.title} className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+          <div className="relative h-44 overflow-hidden bg-slate-100">
+            <img src={item.image} alt={item.title} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+            <span className="absolute bottom-3 left-3 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-slate-900">{item.title}</span>
+          </div>
+          <div className="p-5"><h3 className="font-bold text-slate-900">{item.title}</h3><p className="mt-2 min-h-10 text-sm leading-5 text-slate-500">{item.description}</p><Link href="/sign-up" className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-teal-800 hover:text-amber-600">Solicitar servicio <ChevronRight size={16}/></Link></div>
+        </article>)}
       </div>
     </section>
 
