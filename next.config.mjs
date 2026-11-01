@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  // Do not ignore TypeScript errors: CI must block broken builds.
   images: {
     unoptimized: true,
   },
