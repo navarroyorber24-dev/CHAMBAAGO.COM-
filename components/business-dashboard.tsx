@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import type { LucideIcon } from 'lucide-react'
 import {
   Activity, ArrowDownRight, ArrowUpRight, BriefcaseBusiness,
   ChartNoAxesCombined, ChevronRight, CircleDollarSign,
@@ -34,7 +35,7 @@ const modules = [
   { title: 'Egresos', detail: 'Comisiones, reembolsos y gastos', icon: ArrowDownRight, color: 'bg-rose-600' },
 ]
 
-function Metric({ title, note, icon: Icon }: { title: string; note: string; icon: typeof Users }) {
+function Metric({ title, note, icon: Icon }: { title: string; note: string; icon: LucideIcon }) {
   return <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
     <div className="flex items-center justify-between"><span className="text-sm font-medium text-slate-500">{title}</span><Icon className="text-blue-700" size={20}/></div>
     <p className="mt-4 text-3xl font-bold tracking-tight text-slate-900">—</p>
@@ -48,7 +49,7 @@ export default function BusinessDashboard() {
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-3">
-          <button className="rounded-lg p-2 text-slate-600 md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menú">{menuOpen ? <X/> : <Menu/>}</button>
+          <button type="button" className="rounded-lg p-2 text-slate-600 md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"} aria-expanded={menuOpen} aria-controls="mobile-navigation">{menuOpen ? <X/> : <Menu/>}</button>
           <img src="/chambaago-logo.svg" alt="Logo CHAMBAAGO" className="h-11 w-11 rounded-xl object-cover shadow-sm" />
           <div><span className="text-lg font-black tracking-tight">CHAMBAAGO<span className="text-amber-500">.COM</span></span><p className="text-[10px] font-semibold uppercase tracking-[.18em] text-slate-500">Tu solución rápida para el hogar</p></div>
         </div>
@@ -57,7 +58,7 @@ export default function BusinessDashboard() {
         </nav>
         <div className="flex items-center gap-2"><Link href="/sign-in" className="hidden rounded-xl px-4 py-2 text-sm font-semibold text-blue-800 hover:bg-blue-50 sm:inline-flex">Ingresar</Link><Link href="/sign-up" className="rounded-xl bg-amber-400 px-4 py-2.5 text-sm font-bold text-slate-950 shadow-sm hover:bg-amber-300">Crear cuenta</Link></div>
       </div>
-      {menuOpen && <nav className="border-t border-slate-200 bg-white p-4 md:hidden">{sections.map(item => <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)} className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-semibold text-slate-700"><item.icon size={18}/>{item.label}</a>)}</nav>}
+      {menuOpen && <nav id="mobile-navigation" aria-label="Navegación móvil" className="border-t border-slate-200 bg-white p-4 md:hidden">{sections.map(item => <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)} className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-semibold text-slate-700"><item.icon size={18}/>{item.label}</a>)}</nav>}
     </header>
 
     <section className="bg-gradient-to-br from-[#071d42] via-[#0b3974] to-[#087b9d] text-white">
