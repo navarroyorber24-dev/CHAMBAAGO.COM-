@@ -1,14 +1,8 @@
 import type { Metadata, Viewport } from 'next'
+import { Geist } from 'next/font/google'
 import './globals.css'
-import {
-  Geist as V0_Font_Geist,
-  Geist_Mono as V0_Font_Geist_Mono,
-  Source_Serif_4 as V0_Font_Source_Serif_4,
-} from 'next/font/google'
 
-const geist = V0_Font_Geist({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800', '900'] })
-const geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ['400', '500', '600', '700'] })
-const sourceSerif = V0_Font_Source_Serif_4({ subsets: ['latin'], weight: ['400', '500', '600', '700'] })
+const geist = Geist({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800', '900'] })
 
 export const metadata: Metadata = {
   title: 'CHAMBAAGO.COM — Servicios para el hogar',
@@ -23,7 +17,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={geist.variable}>
+    <html lang="es">
       <body className={`${geist.className} antialiased`}>
         {children}
       </body>
