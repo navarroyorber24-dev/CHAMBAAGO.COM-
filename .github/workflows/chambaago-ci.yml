@@ -1,0 +1,37 @@
+name: CHAMBAAGO - Verificación continua
+
+on:
+  pull_request:
+    branches: ["CHAMBAAGO.COM"]
+  push:
+    branches: ["CHAMBAAGO.COM", "design/plantilla-profesional-chambaago"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: chambaago-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Activar pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - name: Instalar dependencias
+        run: pnpm install --frozen-lockfile
+      - name: Revisar lint
+        run: pnpm lint
+        continue-on-error: true
+      - name: Compilar aplicación
+        run: pnpm build
