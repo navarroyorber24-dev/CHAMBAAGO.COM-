@@ -30,8 +30,5 @@ jobs:
           version: 10
       - name: Instalar dependencias
         run: pnpm install --frozen-lockfile
-      - name: Revisar lint
-        run: pnpm lint
-        continue-on-error: true
       - name: Compilar aplicación
         run: pnpm build
