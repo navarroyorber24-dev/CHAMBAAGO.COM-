@@ -41,7 +41,7 @@ export default function BusinessDashboard() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-3">
           <button className="rounded-lg p-2 text-slate-600 md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menú">{menuOpen ? <X/> : <Menu/>}</button>
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-800 text-amber-300"><Home size={22}/></div>
+          <img src="/chambaago-logo.svg" alt="Logo CHAMBAAGO" className="h-11 w-11 rounded-xl object-cover shadow-sm" />
           <div><span className="text-lg font-black tracking-tight">CHAMBAAGO<span className="text-amber-500">.COM</span></span><p className="text-[10px] font-semibold uppercase tracking-[.18em] text-slate-500">Tu solución rápida para el hogar</p></div>
         </div>
         <nav className="hidden items-center gap-6 text-sm font-semibold text-slate-600 lg:flex">
@@ -59,9 +59,13 @@ export default function BusinessDashboard() {
           <p className="mt-5 max-w-2xl text-base leading-7 text-blue-100">Publica tu problema, comparte una foto, compara presupuestos y sigue el servicio desde una sola plataforma.</p>
           <div className="mt-8 flex flex-wrap gap-3"><Link href="/sign-up" className="inline-flex items-center gap-2 rounded-xl bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300">Solicitar un servicio <ChevronRight size={18}/></Link><Link href="/sign-in" className="rounded-xl border border-white/30 px-5 py-3 font-semibold text-white hover:bg-white/10">Acceso a mi cuenta</Link></div>
           <p className="mt-5 text-xs text-blue-200">Para clientes y profesionales · Seguimiento y comprobantes · Historial de actividad</p>
+          <div className="mt-9 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-2xl border border-white/15 bg-slate-950/35 p-4 backdrop-blur"><p className="text-xs font-bold uppercase tracking-widest text-amber-300">Nuestra misión</p><p className="mt-2 text-sm leading-6 text-blue-50">Acercar a las familias a profesionales de confianza, con presupuestos claros, seguimiento y una experiencia segura.</p></div>
+            <div className="rounded-2xl border border-white/15 bg-slate-950/35 p-4 backdrop-blur"><p className="text-xs font-bold uppercase tracking-widest text-cyan-200">Nuestra visión</p><p className="mt-2 text-sm leading-6 text-blue-50">Ser una red de servicios para el hogar reconocida por conectar oportunidades, calidad y confianza en cada comunidad.</p></div>
+          </div>
         </div>
         <div className="rounded-3xl border border-white/15 bg-white/10 p-6 shadow-2xl backdrop-blur">
-          <div className="flex items-center gap-3"><div className="rounded-xl bg-amber-400 p-3 text-slate-950"><Database size={24}/></div><div><p className="font-bold">Central de control CHAMBAAGO</p><p className="text-xs text-blue-100">Arquitectura de información propuesta</p></div></div>
+          <div className="flex items-center gap-3"><img src="/chambaago-logo.svg" alt="" className="h-12 w-12 rounded-xl object-cover" /><div><p className="font-bold">Central de control CHAMBAAGO</p><p className="text-xs text-blue-100">Arquitectura de información propuesta</p></div></div>
           <div className="my-6 rounded-2xl border border-cyan-300/40 bg-[#061b3d]/70 p-4 text-center"><p className="text-xs uppercase tracking-widest text-cyan-200">Nodo principal</p><p className="mt-1 text-xl font-black">CHAMBAAGO.COM</p><p className="text-sm text-blue-100">Base de datos central</p></div>
           <div className="grid grid-cols-2 gap-3">{['Usuarios y clientes','Profesionales','Servicios y evidencias','Pagos y egresos'].map(x=><div key={x} className="rounded-xl border border-white/15 bg-white/10 px-3 py-3 text-center text-sm font-semibold">{x}</div>)}</div>
           <div className="mt-4 flex items-center justify-center gap-2 text-xs text-emerald-200"><ShieldCheck size={16}/> Accesos por rol y registro de auditoría</div>
