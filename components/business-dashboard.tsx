@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import {
-  Activity, ArrowDownRight, ArrowUpRight, BadgeCheck, BriefcaseBusiness,
+  Activity, ArrowDownRight, ArrowUpRight, BriefcaseBusiness,
   ChartNoAxesCombined, CheckCircle2, ChevronRight, CircleDollarSign,
   ClipboardList, Database, FileSpreadsheet, Home, Menu, ShieldCheck,
   Users, Wallet, X, Wrench
