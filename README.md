@@ -13,7 +13,7 @@ Plataforma web en desarrollo para conectar a personas que necesitan servicios pa
 - **Stripe** como integración de pagos (requiere configuración y pruebas).
 - **Tailwind CSS 4** y componentes de interfaz.
 - **Capacitor 8** para preparar una compilación Android.
-- **Vercel Analytics**.
+- **Railway** para despliegue y alojamiento de la aplicación.
 
 ## Estructura principal
 
@@ -72,7 +72,7 @@ Plataforma web en desarrollo para conectar a personas que necesitan servicios pa
 
 ## Variables de entorno
 
-Configura los valores en el gestor de secretos de tu entorno (Vercel/Railway) y en `.env.local` para desarrollo. **No subas secretos al repositorio.**
+Configura los valores en el gestor de variables de Railway y en `.env.local` para desarrollo. **No subas secretos al repositorio.**
 
 | Variable | Uso |
 |---|---|
@@ -98,20 +98,20 @@ pnpm build
 
 Un build correcto no demuestra por sí solo que autenticación, base de datos, pagos, GPS, notificaciones o flujos de servicio funcionen en producción. Esos procesos deben probarse con sus credenciales y servicios reales en un entorno seguro.
 
-## Despliegue
+## Despliegue en Railway
 
-### Vercel
+El repositorio incluye `railway.json` con configuración de RAILPACK, instalación con pnpm, compilación Next.js, comando de inicio, reinicio ante fallos y comprobación de salud en `/api/health`.
 
-1. Importa este repositorio en Vercel.
-2. Selecciona la rama de producción `CHAMBAAGO.COM`.
-3. Usa la raíz del repositorio como Root Directory.
-4. Framework: Next.js (detección automática).
-5. Instala las variables de entorno requeridas en Production, Preview y Development según corresponda.
-6. Despliega y revisa los logs de build y las rutas principales.
+1. Conecta el repositorio `navarroyorber24-dev/CHAMBAAGO.COM-` a Railway.
+2. Selecciona la rama `CHAMBAAGO.COM` y deja Root Directory en la raíz del repositorio.
+3. Añade una base PostgreSQL al mismo proyecto Railway.
+4. Configura `DATABASE_URL` usando la referencia privada del servicio PostgreSQL; no uses `localhost`.
+5. Genera un valor privado y único para `BETTER_AUTH_SECRET`.
+6. Configura `BETTER_AUTH_URL` con el dominio público que Railway asigne a la aplicación.
+7. Despliega y verifica que `/api/health` responda con estado `ok` y base de datos `connected`.
 
-### Railway
+No reutilices una base de datos de otro proyecto sin comprobar primero la compatibilidad del esquema y respaldar sus datos. No publiques secretos en GitHub.
 
-Si se utiliza Railway para alojar la aplicación o la base de datos, configura el servicio desde el repositorio y añade las variables correspondientes en el entorno Railway. No dupliques ni expongas credenciales entre servicios.
 
 ## Scripts disponibles
 
