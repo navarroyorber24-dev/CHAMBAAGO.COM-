@@ -1,11 +1,16 @@
 {
-  "name": "my-project",
-  "version": "0.1.0",
+  "name": "chambaago",
+  "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@10.0.0",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -H 0.0.0.0 -p ${PORT:-3000}",
+    "typecheck": "tsc --noEmit",
     "android:sync": "next build && npx cap sync android",
     "android:open": "npx cap open android"
   },
@@ -14,7 +19,6 @@
     "@capacitor/android": "^8.5.0",
     "@capacitor/core": "^8.5.0",
     "@stripe/stripe-js": "^9.14.0",
-    "@vercel/analytics": "1.6.1",
     "better-auth": "^1.7.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
