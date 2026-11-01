@@ -1,0 +1,25 @@
+# CodeRabbit is the required change-review layer for CHAMBAAGO.
+language: es-ES
+
+reviews:
+  profile: assertive
+  request_changes_workflow: false
+  high_level_summary: true
+  review_status: true
+  auto_review:
+    enabled: true
+    auto_incremental_review: true
+    drafts: false
+    base_branches:
+      - CHAMBAAGO.COM
+  path_instructions:
+    - path: "app/api/**/*.{ts,tsx}"
+      instructions: "Prioritize authentication, authorization, input validation, ownership checks, payment integrity, idempotency, and protection of personal data. Never trust client-supplied roles, payment states, or account identifiers."
+    - path: "components/**/*.{ts,tsx}"
+      instructions: "Check real backend wiring, responsive behavior, accessibility, loading/error states, and that metrics are not fabricated or presented as live when they are placeholders."
+    - path: "lib/**/*.{ts,tsx}"
+      instructions: "Review database connection lifecycle, secure configuration, schema consistency, transaction handling, and secret exposure."
+    - path: "db/**/*.{sql,ts,mjs}"
+      instructions: "Review migration safety, idempotency, indexes, referential integrity, rollback strategy, and data-loss risks. Do not recommend destructive production migrations without backup and recovery."
+    - path: ".github/workflows/**/*.{yml,yaml}"
+      instructions: "Review least-privilege permissions, pinned action SHAs, fork pull request safety, secret exposure, and production deployment gates."
