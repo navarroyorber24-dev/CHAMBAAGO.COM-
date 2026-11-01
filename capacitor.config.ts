@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli'
 
 const config: CapacitorConfig = {
-  appId: 'com.nexo.business',
-  appName: 'Nexo',
+  appId: 'com.chambaago.app',
+  appName: 'CHAMBAAGO',
   webDir: 'out',
   server: { androidScheme: 'https' },
 }
